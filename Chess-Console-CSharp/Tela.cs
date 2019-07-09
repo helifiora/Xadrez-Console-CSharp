@@ -1,5 +1,6 @@
 using System;
 using tabuleiro;
+using xadrez;
 
 namespace Chess_Console_CSharp
 {
@@ -43,6 +44,14 @@ namespace Chess_Console_CSharp
             }
             
             Console.ForegroundColor = aux;
+        }
+
+        public static PosicaoXadrex LerPosicaoXadrex()
+        {
+            string s = Console.ReadLine();
+            char coluna = s[0];
+            int linha = int.Parse(s[1] + "");
+            return new PosicaoXadrex(coluna, linha);
         }
     }
 }

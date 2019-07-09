@@ -10,13 +10,20 @@ namespace Chess_Console_CSharp
         {
             try
             {
-                Tabuleiro tab = new Tabuleiro(8, 8);
+                PartidaDeXadrez partidaDeXadrez = new PartidaDeXadrez();
+                while (!partidaDeXadrez.Terminado)
+                {
+                    Console.Clear();
+                    Tela.ImprimirTabuleiro(partidaDeXadrez.Tabuleiro);
 
-                tab.ColocarPeca(new Torre(tab, Cor.Preta), new Posicao(0, 1));
-                tab.ColocarPeca(new Torre(tab, Cor.Preta), new Posicao(0, 2));
-                tab.ColocarPeca(new Rei(tab, Cor.Branca), new Posicao(2, 7));
+                    Console.Write("Origem: ");
+                    Posicao origem = Tela.LerPosicaoXadrex().ToPosicao();
 
-                Tela.ImprimirTabuleiro(tab);
+                    Console.Write("Destino: ");
+                    Posicao destino = Tela.LerPosicaoXadrex().ToPosicao();
+                    
+                    partidaDeXadrez.ExecutaMovimento(origem, destino);
+                }
             }
             catch (TabuleiroException e)
             {
