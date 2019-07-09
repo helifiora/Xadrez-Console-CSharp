@@ -1,4 +1,6 @@
 using System;
+using System.Collections.Generic;
+using System.Security.Cryptography.X509Certificates;
 using tabuleiro;
 using xadrez;
 
@@ -67,9 +69,49 @@ namespace Chess_Console_CSharp
                 Console.ForegroundColor = aux;
             }
         }
-        
-        
 
+        public static void ImprimirPartida(PartidaDeXadrez partidaDeXadrez)
+        {
+            ImprimirTabuleiro(partidaDeXadrez.Tabuleiro);
+            Console.WriteLine();
+
+            ImprimirPecasCapturadas(partidaDeXadrez);
+            Console.WriteLine();
+
+            Console.WriteLine("Turno: " + partidaDeXadrez.Turno);
+            Console.Write("Aguardando Jogada: ");
+            if (partidaDeXadrez.JogadorAtual == Cor.Branca)
+                Console.ForegroundColor = ConsoleColor.DarkCyan;
+            else
+                Console.ForegroundColor = ConsoleColor.DarkRed;
+            Console.WriteLine(partidaDeXadrez.JogadorAtual);
+            Console.ForegroundColor = ConsoleColor.White;
+        }
+
+        public static void ImprimirPecasCapturadas(PartidaDeXadrez partidaDeXadrez)
+        {
+            Console.WriteLine("Peças Capturadas: ");
+            Console.Write("Brancas: ");
+            Console.ForegroundColor = ConsoleColor.DarkCyan;
+            ImprimirConjunto(partidaDeXadrez.PecasCapturadas(Cor.Branca));
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.Write("Pretas: ");
+            Console.ForegroundColor = ConsoleColor.DarkRed;
+            ImprimirConjunto(partidaDeXadrez.PecasCapturadas(Cor.Preta));
+            Console.ForegroundColor = ConsoleColor.White;
+        }
+
+        public static void ImprimirConjunto(HashSet<Peca> pecas)
+        {
+            Console.Write("[ ");
+            foreach (Peca xPeca in pecas)
+            {
+                Console.Write("" + xPeca + ", ");
+            }
+
+            Console.WriteLine("]");
+        }
+        
         public static PosicaoXadrex LerPosicaoXadrex()
         {
             string s = Console.ReadLine();
