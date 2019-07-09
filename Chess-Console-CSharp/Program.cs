@@ -15,9 +15,13 @@ namespace Chess_Console_CSharp
                 {
                     Console.Clear();
                     Tela.ImprimirTabuleiro(partidaDeXadrez.Tabuleiro);
-
+                    Console.WriteLine();
+                    Console.WriteLine("Turno: " + partidaDeXadrez.Turno);
+                    Console.WriteLine("Aguardando Jogada: " + partidaDeXadrez.JogadorAtual);
+                    
                     Console.Write("Origem: ");
                     Posicao origem = Tela.LerPosicaoXadrex().ToPosicao();
+                    partidaDeXadrez.ValidarPosicaoOrigem(origem);
 
                     bool[,] posicoesPossiveis = partidaDeXadrez.Tabuleiro.Peca(origem).MovimentosPossiveis();
                     Console.Clear();
@@ -26,8 +30,9 @@ namespace Chess_Console_CSharp
                     Console.WriteLine();
                     Console.Write("Destino: ");
                     Posicao destino = Tela.LerPosicaoXadrex().ToPosicao();
+                    partidaDeXadrez.ValidarPosicaoDestino(origem, destino);
                     
-                    partidaDeXadrez.ExecutaMovimento(origem, destino);
+                    partidaDeXadrez.RealizaJogada(origem, destino);
                 }
             }
             catch (TabuleiroException e)
