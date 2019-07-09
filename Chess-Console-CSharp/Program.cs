@@ -13,6 +13,7 @@ namespace Chess_Console_CSharp
                 PartidaDeXadrez partidaDeXadrez = new PartidaDeXadrez();
                 while (!partidaDeXadrez.Terminado)
                 {
+                    Console.Clear();
                     Tela.ImprimirPartida(partidaDeXadrez);
                     
                     Console.Write("Origem: ");
@@ -29,7 +30,6 @@ namespace Chess_Console_CSharp
                     partidaDeXadrez.ValidarPosicaoDestino(origem, destino);
                     
                     partidaDeXadrez.RealizaJogada(origem, destino);
-                    Console.Clear();
                 }
             }
             catch (TabuleiroException e)
