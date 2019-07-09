@@ -19,6 +19,11 @@ namespace Chess_Console_CSharp
                     Console.Write("Origem: ");
                     Posicao origem = Tela.LerPosicaoXadrex().ToPosicao();
 
+                    bool[,] posicoesPossiveis = partidaDeXadrez.Tabuleiro.Peca(origem).MovimentosPossiveis();
+                    Console.Clear();
+                    Tela.ImprimirTabuleiro(partidaDeXadrez.Tabuleiro, posicoesPossiveis);
+                    
+                    Console.WriteLine();
                     Console.Write("Destino: ");
                     Posicao destino = Tela.LerPosicaoXadrex().ToPosicao();
                     

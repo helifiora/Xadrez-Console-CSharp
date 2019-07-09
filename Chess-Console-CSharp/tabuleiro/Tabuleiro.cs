@@ -19,6 +19,11 @@ namespace tabuleiro
             return pecas[linha, coluna];
         }
 
+        public Peca Peca(Posicao posicao)
+        {
+            return pecas[posicao.Linha, posicao.Coluna];
+        }
+
         public void ColocarPeca(Peca p, Posicao posicao)
         {
             if (ExistePeca(posicao))
