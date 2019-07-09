@@ -10,13 +10,9 @@ namespace Chess_Console_CSharp
         {
             try
             {
-                Tabuleiro tab = new Tabuleiro(8, 8);
-
-                tab.ColocarPeca(new Torre(tab, Cor.Preta), new Posicao(0, 0));
-                tab.ColocarPeca(new Torre(tab, Cor.Preta), new Posicao(0, 2));
-                tab.ColocarPeca(new Rei(tab, Cor.Preta), new Posicao(2, 9));
-
-                Tela.ImprimirTabuleiro(tab);
+                PosicaoXadrex pos = new PosicaoXadrex('c', 7);
+                Console.WriteLine(pos);
+                Console.WriteLine(pos.ToPosicao());
             }
             catch (TabuleiroException e)
             {
