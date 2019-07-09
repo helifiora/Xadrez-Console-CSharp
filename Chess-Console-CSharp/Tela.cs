@@ -86,6 +86,10 @@ namespace Chess_Console_CSharp
                 Console.ForegroundColor = ConsoleColor.DarkRed;
             Console.WriteLine(partidaDeXadrez.JogadorAtual);
             Console.ForegroundColor = ConsoleColor.White;
+            if (partidaDeXadrez.Xeque)
+            {
+                Console.WriteLine("Você está em Xeque!");
+            }
         }
 
         public static void ImprimirPecasCapturadas(PartidaDeXadrez partidaDeXadrez)
